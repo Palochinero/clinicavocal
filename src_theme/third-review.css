@@ -1,0 +1,3840 @@
+/* Clínica Vocal - Tercera Revisión Visual */
+
+/* Header con los mismos contrastes del pie de página (fondo Negro Carbón, textos Crema/Beige, logo circular) */
+.cv-header {
+    background: var(--color-negro);
+    border-bottom: 1px solid rgba(217, 197, 178, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 99999 !important;
+}
+
+.cv-head {
+    background: transparent;
+    margin-top: 0;
+    padding: 0;
+    height: 64px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 20px;
+}
+
+.cv-brand {
+    color: var(--color-crema);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+.cv-brand img {
+    background: var(--color-crema) !important;
+    border-radius: 50%;
+    padding: 3px;
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    mix-blend-mode: normal !important;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(217, 197, 178, 0.4);
+}
+
+.cv-brand strong {
+    color: var(--color-crema);
+    font-size: 18px;
+    font-weight: 700;
+    font-family: 'Plus Jakarta Sans', 'Palatino Linotype', Georgia, serif;
+    line-height: 1.15;
+    display: block;
+}
+
+.cv-brand small {
+    color: var(--color-beige);
+    font-size: 9.5px;
+    font-weight: 600;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-top: 2px;
+    display: block;
+}
+
+/* Navegación centrada con tipografía moderna, curvada y minimalista en negrita */
+.cv-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 26px;
+    height: 100%;
+}
+
+.cv-nav-link {
+    color: var(--color-crema);
+    font-size: 15px;
+    font-weight: 700;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 4px;
+    transition: color 0.2s ease;
+}
+
+.cv-nav-link:hover,
+.cv-nav-item:hover > .cv-nav-link {
+    color: var(--color-roble);
+}
+
+.cv-nav-arrow {
+    font-size: 10px;
+    transition: transform 0.2s ease, color 0.2s ease;
+    color: var(--color-beige);
+    display: inline-block;
+}
+
+.cv-nav-item:hover .cv-nav-arrow {
+    transform: rotate(180deg);
+    color: var(--color-roble);
+}
+
+/* Elemento contenedor de dropdown */
+.cv-nav-item {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    height: 100%;
+}
+
+/* Menú desplegable base */
+.cv-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(8px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    background: #1C1A17;
+    border: 1px solid rgba(217, 197, 178, 0.22);
+    border-radius: 10px;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+    padding: 12px;
+    min-width: 250px;
+    z-index: 100000 !important;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.2s;
+}
+
+/* Puente invisible para mantener el cursor en hover */
+.cv-dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -14px;
+    left: 0;
+    right: 0;
+    height: 14px;
+}
+
+.cv-nav-item:hover .cv-dropdown-menu,
+.cv-nav-item:focus-within .cv-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Dropdown ancho para Centros con pestaña de Equipo */
+.cv-dropdown-large {
+    min-width: 520px;
+    display: grid;
+    grid-template-columns: 1.05fr 1.25fr;
+    gap: 16px;
+    padding: 18px;
+}
+
+.cv-dropdown-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.cv-dropdown-large .cv-dropdown-section:first-child {
+    border-right: 1px solid rgba(217, 197, 178, 0.15);
+    padding-right: 16px;
+}
+
+.cv-dropdown-heading {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-roble);
+    margin-bottom: 2px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(156, 122, 91, 0.3);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.cv-dropdown-item {
+    display: block;
+    padding: 8px 10px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.15s ease;
+    background: transparent;
+}
+
+.cv-dropdown-item:hover {
+    background: rgba(217, 197, 178, 0.1);
+}
+
+.cv-dropdown-item strong {
+    display: block;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--color-crema);
+    line-height: 1.25;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    transition: color 0.15s ease;
+}
+
+.cv-dropdown-item:hover strong {
+    color: var(--color-roble);
+}
+
+.cv-dropdown-item small {
+    display: block;
+    font-size: 11px;
+    color: var(--color-beige);
+    margin-top: 2px;
+    line-height: 1.35;
+    font-weight: 400;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.cv-dropdown-sublink {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-roble);
+    text-decoration: none;
+    margin-top: 4px;
+    padding: 4px 8px;
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.15s ease;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.cv-dropdown-sublink:hover {
+    color: var(--color-crema);
+    text-decoration: underline;
+}
+
+.cv-dropdown-centers {
+    min-width: 300px;
+    padding: 16px;
+}
+
+.cv-dropdown-centers .cv-dropdown-item-center:last-child {
+    margin-bottom: 0;
+}
+
+.cv-dropdown-services-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.cv-dropdown-item-service {
+    padding: 13px 14px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(156, 122, 91, 0.25);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.cv-dropdown-item-service:last-child {
+    margin-bottom: 0;
+}
+
+.cv-dropdown-item-service:hover {
+    background: rgba(156, 122, 91, 0.16);
+    border-color: var(--color-roble);
+    transform: translateY(-1px);
+}
+
+.cv-dropdown-item-service strong {
+    display: block;
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.25;
+    margin-bottom: 3px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    transition: color 0.15s ease;
+}
+
+.cv-dropdown-item-service:hover strong {
+    color: var(--color-roble);
+}
+
+.cv-dropdown-item-service small {
+    display: block;
+    font-size: 11.5px;
+    color: var(--color-beige);
+    line-height: 1.35;
+    font-weight: 400;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.cv-dropdown-item-center {
+    padding: 12px 14px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(156, 122, 91, 0.25);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    transition: all 0.2s ease;
+}
+
+.cv-dropdown-item-center:hover {
+    background: rgba(156, 122, 91, 0.16);
+    border-color: var(--color-roble);
+    transform: translateY(-1px);
+}
+
+.cv-dropdown-item-center strong {
+    font-size: 15px;
+    color: #ffffff;
+    margin-bottom: 3px;
+}
+
+.cv-dropdown-item-center small {
+    font-size: 12px;
+    color: var(--color-beige);
+}
+
+.cv-dropdown-team-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 6px;
+    padding-left: 0;
+    border-left: none;
+}
+
+.cv-team-badge-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 9px 13px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1.5px solid rgba(156, 122, 91, 0.35);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.cv-team-badge-link strong {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--color-crema);
+    letter-spacing: 0.01em;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    transition: color 0.15s ease;
+}
+
+.cv-team-badge-link span {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-roble);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    transition: color 0.15s ease;
+}
+
+.cv-team-badge-link:hover {
+    background: rgba(156, 122, 91, 0.22);
+    border-color: var(--color-roble);
+    transform: translateY(-1px);
+}
+
+.cv-team-badge-link:hover strong {
+    color: #ffffff;
+}
+
+.cv-team-badge-link:hover span {
+    color: var(--color-crema);
+}
+
+.cv-head-action {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 14px;
+}
+
+.cv-head-action .cv-button {
+    background: var(--color-roble);
+    border-color: var(--color-roble);
+    color: var(--color-crema) !important;
+    padding: 8px 18px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13.5px;
+    font-weight: 700;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.cv-head-action .cv-button:hover {
+    background: var(--color-terracota);
+    border-color: var(--color-terracota);
+}
+
+.cv-menu-button {
+    color: var(--color-crema);
+    border-color: rgba(217, 197, 178, 0.4);
+    background: transparent;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+}
+
+/* Hero portada ajustado */
+.cv-home-hero-band {
+    background: var(--color-crema);
+    border-bottom: 1px solid var(--line);
+    padding: 44px 0 48px;
+}
+
+.cv-home-brand {
+    min-height: auto;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1.08fr 0.92fr;
+    gap: 32px;
+    align-items: center;
+    color: var(--color-negro);
+}
+
+.cv-hero-text {
+    order: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: clamp(24px, 4.5vw, 65px);
+}
+
+.cv-hero-title {
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+}
+
+.cv-title-lead,
+.cv-title-mid {
+    display: block;
+    font-family: 'Italianno', 'Alex Brush', cursive;
+    font-weight: 400;
+    font-size: clamp(58px, 7.2vw, 94px);
+    line-height: 1.05;
+    letter-spacing: 0.01em;
+    color: var(--color-negro);
+}
+
+.cv-title-avanzar {
+    display: block;
+    font-family: 'Italianno', 'Alex Brush', cursive;
+    font-weight: 400;
+    font-size: clamp(88px, 11.5vw, 144px);
+    line-height: 1.05;
+    letter-spacing: 0.02em;
+    color: var(--color-negro);
+    margin-top: 6px;
+    margin-left: clamp(35px, 5.5vw, 70px);
+    text-transform: lowercase;
+}
+
+/* Logotipo principal en la sección (grande, a la derecha) */
+.cv-logo-stage {
+    order: 2;
+    height: 380px;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+    position: relative;
+    overflow: visible;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.cv-logo-stage:before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 370px;
+    height: 370px;
+    border: 1px solid rgba(217, 197, 178, 0.7);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.cv-logo-stage img {
+    width: 340px;
+    height: 340px;
+    object-fit: contain;
+    mix-blend-mode: normal;
+    z-index: 1;
+    position: relative;
+    margin: 0;
+    background: transparent;
+}
+
+/* Sección SEO de Especialidades Clínicas */
+.cv-services-seo {
+    padding: 75px 0 85px;
+    background: #ffffff;
+    border-bottom: 1px solid var(--line);
+}
+
+.cv-services-header {
+    text-align: center;
+    max-width: 840px;
+    margin: 0 auto 44px;
+}
+
+.cv-services-header h2 {
+    font-family: 'Plus Jakarta Sans', 'Palatino Linotype', Georgia, serif;
+    font-size: clamp(30px, 3.8vw, 44px);
+    font-weight: 700;
+    color: var(--color-negro);
+    line-height: 1.22;
+    margin: 0;
+    text-align: center;
+}
+
+.cv-services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px;
+}
+
+.cv-service-card {
+    background: var(--color-crema);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 42px 36px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.cv-service-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-roble);
+    box-shadow: 0 16px 36px rgba(28, 26, 23, 0.08);
+}
+
+.cv-service-card-top {
+    margin-bottom: 26px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid rgba(217, 197, 178, 0.4);
+    text-align: center;
+}
+
+.cv-service-card-top h3 {
+    font-family: 'Plus Jakarta Sans', 'Palatino Linotype', Georgia, serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--color-negro);
+    margin: 0 0 10px;
+    line-height: 1.15;
+    text-align: center;
+}
+
+.cv-service-lead-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px 12px;
+    font-size: 13.5px;
+    font-weight: 600;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--color-roble);
+    text-align: center;
+    flex-wrap: wrap;
+    line-height: 1.45;
+}
+
+.cv-service-specialties {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    margin-bottom: 34px;
+    flex: 1 0 auto;
+    text-align: center;
+}
+
+.cv-specialty-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    text-align: center;
+}
+
+.cv-specialty-item h4 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--color-negro);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Quitar viñetas / puntos de la izquierda */
+.cv-specialty-item h4:before {
+    display: none !important;
+}
+
+.cv-specialty-item p {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--muted);
+    margin: 0 auto;
+    max-width: 440px;
+    text-align: center;
+}
+
+/* Botones minimalistas, limpios y remarcables sin flechas */
+.cv-service-card-btn,
+.cv-soft-btn {
+    margin: 26px auto 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-negro);
+    color: var(--color-crema) !important;
+    border: 1.5px solid var(--color-negro);
+    padding: 13px 36px;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(28, 26, 23, 0.15);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    align-self: center;
+    text-align: center;
+    cursor: pointer;
+}
+
+.cv-service-card-btn:hover,
+.cv-soft-btn:hover {
+    background: var(--color-roble);
+    border-color: var(--color-roble);
+    color: #ffffff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(156, 122, 91, 0.3);
+    text-decoration: none;
+}
+
+/* Secciones intermedias de Equipo y Centros con cajas y cajones interiores */
+.cv-home-short {
+    padding: 75px 0 85px;
+    background: var(--tint);
+    border-bottom: 1px solid var(--line);
+}
+
+.cv-home-short-header {
+    text-align: center;
+    max-width: 820px;
+    margin: 0 auto 44px;
+}
+
+.cv-home-short-header .cv-eyebrow {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--color-roble);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.cv-home-short-header h2 {
+    font-family: 'Plus Jakarta Sans', 'Palatino Linotype', Georgia, serif;
+    font-size: clamp(28px, 3.4vw, 40px);
+    font-weight: 700;
+    color: var(--color-negro);
+    line-height: 1.25;
+    margin: 0 auto 14px;
+    text-align: center;
+}
+
+.cv-short-lead {
+    font-size: 16.5px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin: 0 auto;
+    max-width: 640px;
+    text-align: center;
+}
+
+.cv-clean-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+}
+
+/* Recuadro contenedor grande con fondo destacado */
+.cv-box-container {
+    background: #ffffff;
+    border: 1.5px solid rgba(156, 122, 91, 0.28);
+    border-radius: 12px;
+    padding: 42px 34px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    box-shadow: 0 10px 32px rgba(28, 26, 23, 0.07);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.cv-box-container:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-roble);
+    box-shadow: 0 18px 40px rgba(28, 26, 23, 0.12);
+}
+
+.cv-box-header {
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.cv-box-tag {
+    display: inline-block;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-roble);
+    background: rgba(156, 122, 91, 0.12);
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+}
+
+.cv-box-header h3 {
+    font-family: 'Plus Jakarta Sans', 'Palatino Linotype', Georgia, serif;
+    font-size: 25px;
+    font-weight: 700;
+    color: var(--color-negro);
+    margin: 0 0 10px;
+    line-height: 1.25;
+    text-align: center;
+}
+
+.cv-box-header p {
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--muted);
+    margin: 0 auto;
+    max-width: 460px;
+    text-align: center;
+}
+
+/* Cuadrícula de tarjetas/cajones interiores */
+.cv-inner-grid {
+    display: grid;
+    gap: 12px;
+    margin: 0 0 28px;
+    flex: 1 0 auto;
+}
+
+.cv-team-inner-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.cv-centers-inner-grid {
+    grid-template-columns: 1fr;
+}
+
+/* Cada cajón interior como tarjeta seleccionable interactiva */
+.cv-inner-card {
+    position: relative;
+    background: #FAF6F0;
+    border: 1.5px solid rgba(156, 122, 91, 0.28);
+    border-radius: 12px;
+    padding: 18px 38px 18px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: left;
+    text-decoration: none !important;
+    color: inherit !important;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(28, 26, 23, 0.04);
+    transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+    box-sizing: border-box;
+}
+
+.cv-inner-card:hover,
+.cv-inner-card:focus-visible {
+    background: #ffffff !important;
+    border-color: var(--color-roble) !important;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(156, 122, 91, 0.18) !important;
+    outline: none;
+    text-decoration: none !important;
+}
+
+.cv-inner-card strong {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 15.5px;
+    font-weight: 700;
+    color: var(--color-negro);
+    display: block;
+    margin-bottom: 4px;
+    line-height: 1.3;
+    text-align: left;
+    transition: color 0.2s ease;
+}
+
+.cv-inner-card:hover strong {
+    color: var(--color-roble);
+}
+
+.cv-inner-card span {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13px;
+    color: #7A5F45;
+    display: block;
+    line-height: 1.4;
+    text-align: left;
+    font-weight: 500;
+}
+
+.cv-inner-card small {
+    font-size: 12px;
+    color: var(--muted);
+    display: block;
+    margin-top: 4px;
+    line-height: 1.4;
+    text-align: left;
+}
+
+.cv-card-arrow {
+    position: absolute;
+    top: 16px;
+    right: 14px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: rgba(156, 122, 91, 0.1);
+    color: var(--color-roble);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+}
+
+.cv-inner-card:hover .cv-card-arrow {
+    background: var(--color-roble);
+    color: #ffffff;
+    transform: translate(2px, -2px);
+}
+
+/* Ocultar etiquetas numéricas y de relleno */
+.cv-card-number, .cv-choice-label {
+    display: none !important;
+}
+
+/* Secciones intermedias */
+.cv-home-short {
+    padding: 60px 0 70px;
+    background: var(--tint);
+}
+
+.cv-home-short h2 {
+    max-width: 680px;
+    font-family: 'Plus Jakarta Sans', Georgia, serif;
+    font-size: clamp(28px, 3.4vw, 38px);
+    font-weight: 700;
+    color: var(--color-negro);
+    margin: 0 0 20px;
+}
+
+.cv-compact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    margin: 28px 0;
+}
+
+.cv-large-choice {
+    min-height: 240px;
+    padding: 34px 30px;
+    background: var(--color-negro);
+    color: var(--color-crema);
+    border-radius: 5px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cv-large-choice:nth-child(2) {
+    background: var(--color-beige);
+    color: var(--color-negro);
+}
+
+.cv-large-choice:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 17px 30px #1C1A1725;
+}
+
+.cv-large-choice h2 {
+    font-family: 'Plus Jakarta Sans', Georgia, serif;
+    font-size: 38px;
+    font-weight: 700;
+    color: inherit;
+    margin: 0 0 10px;
+}
+
+.cv-large-choice p {
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.cv-blog-card {
+    padding: 28px;
+    background: var(--color-crema);
+    border-radius: 4px;
+    border-left: 4px solid var(--color-terracota);
+}
+
+.cv-blog-card h2 {
+    font-family: 'Plus Jakarta Sans', Georgia, serif;
+    font-size: 26px;
+    font-weight: 700;
+    margin: 0 0 10px;
+    color: var(--color-negro);
+}
+
+/* Responsivo */
+@media (max-width: 760px) {
+    .cv-head {
+        height: 56px;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 14px;
+    }
+
+    .cv-brand img {
+        width: 38px;
+        height: 38px;
+        padding: 3px;
+        border-radius: 50%;
+        background: var(--color-crema) !important;
+        mix-blend-mode: normal !important;
+    }
+
+    .cv-brand strong {
+        font-size: 16px;
+        color: var(--color-crema);
+    }
+
+    .cv-brand small {
+        font-size: 8.5px;
+        color: var(--color-beige);
+    }
+
+    .cv-head-action .cv-button {
+        display: none;
+    }
+
+    .cv-nav {
+        display: none;
+        position: absolute;
+        top: 56px;
+        left: 0;
+        right: 0;
+        background: var(--color-negro);
+        border-bottom: 1px solid rgba(217, 197, 178, 0.2);
+        padding: 20px 16px 28px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        max-height: calc(100vh - 56px);
+        overflow-y: auto;
+        box-shadow: 0 16px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    .cv-nav.open {
+        display: flex;
+    }
+
+    .cv-nav-item {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        height: auto;
+    }
+
+    .cv-nav-link {
+        font-size: 16px;
+        color: var(--color-crema);
+        padding: 8px 10px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 6px;
+    }
+
+    .cv-nav-link:hover {
+        color: var(--color-roble);
+        background: rgba(217, 197, 178, 0.08);
+    }
+
+    .cv-dropdown-menu {
+        position: static;
+        transform: none;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        box-shadow: none;
+        border: 1px solid rgba(217, 197, 178, 0.15);
+        background: rgba(255, 255, 255, 0.03);
+        margin: 4px 0 8px 10px;
+        border-radius: 8px;
+        padding: 10px;
+        min-width: 0;
+    }
+
+    .cv-dropdown-menu::before {
+        display: none;
+    }
+
+    .cv-dropdown-large {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .cv-dropdown-large .cv-dropdown-section:first-child {
+        border-right: none;
+        padding-right: 0;
+        border-bottom: 1px solid rgba(217, 197, 178, 0.12);
+        padding-bottom: 12px;
+    }
+
+    .cv-home-hero-band {
+        padding: 26px 0 30px;
+    }
+
+    .cv-home-brand {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        padding: 0;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .cv-hero-text {
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .cv-title-lead,
+    .cv-title-mid {
+        font-size: 48px;
+    }
+
+    .cv-title-avanzar {
+        font-size: 68px;
+        margin-left: 15px;
+    }
+
+    .cv-logo-stage {
+        height: 220px;
+        justify-content: center;
+        justify-self: center;
+        transform: none;
+        margin: 0 auto;
+    }
+
+    .cv-logo-stage:before {
+        width: 210px;
+        height: 210px;
+    }
+
+    .cv-logo-stage img {
+        width: 190px;
+        height: 190px;
+    }
+
+    .cv-services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cv-service-card {
+        padding: 28px 20px;
+    }
+
+    .cv-compact-grid,
+    .cv-clean-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cv-team-inner-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cv-box-container {
+        padding: 28px 18px;
+    }
+
+    .cv-large-choice {
+        min-height: 200px;
+    }
+
+    .cv-large-choice h2 {
+        font-size: 32px;
+    }
+}
+
+/* Botón flotante de WhatsApp para pedir información */
+.cv-whatsapp-float {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 9999;
+    background: #25D366;
+    color: #ffffff !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 22px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.38), 0 4px 14px rgba(0, 0, 0, 0.22);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.2s ease;
+}
+
+.cv-whatsapp-float:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(37, 211, 102, 0.48), 0 6px 16px rgba(0, 0, 0, 0.28);
+    background: #20ba5a;
+    color: #ffffff !important;
+    text-decoration: none;
+}
+
+.cv-whatsapp-float svg {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+    .cv-whatsapp-float {
+        bottom: 20px;
+        right: 20px;
+        padding: 11px 18px;
+        font-size: 13px;
+    }
+}
+
+/* Titular en una sola línea semicurvo para portada */
+.cv-title-semicurve-wrap {
+    text-align: center;
+    margin: 0 auto 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.cv-title-semicurve {
+    font-family: 'Plus Jakarta Sans', Georgia, serif;
+    font-size: clamp(22px, 2.9vw, 36px);
+    font-weight: 700;
+    color: var(--color-negro);
+    line-height: 1.25;
+    margin: 0 auto;
+    text-align: center;
+    letter-spacing: -0.015em;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.cv-title-semicurve::after {
+    content: '';
+    display: block;
+    width: 140px;
+    height: 7px;
+    margin: 8px auto 0;
+    border-bottom: 2.5px solid var(--color-roble);
+    border-radius: 50%;
+    opacity: 0.85;
+}
+
+/* Página de Contacto y Cita Previa: Composición Premium a Ancho Completo */
+.cv-contact-page-wrap {
+    width: min(1480px, calc(100% - 48px)) !important;
+    max-width: 1480px !important;
+    margin: auto;
+}
+
+.cv-page-contact {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 30px 0 80px;
+    text-align: center;
+}
+
+.cv-contact-hero-box {
+    background: linear-gradient(145deg, #FAF7F2 0%, #F5EDE2 50%, #ECE1D2 100%);
+    border: 1.5px solid rgba(184, 155, 114, 0.45);
+    border-radius: 20px;
+    padding: 42px 32px;
+    text-align: center;
+    color: #1F1C18;
+    margin: 0 0 36px;
+    box-shadow: 0 14px 38px rgba(78, 56, 32, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+    position: relative;
+    overflow: hidden;
+}
+
+.cv-contact-hero-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 3.5px;
+    background: linear-gradient(90deg, #9C7A5B, #C29B75, #DEC9B3);
+}
+
+.cv-contact-hero-box h1,
+.cv-contact-hero-title,
+.cv-page-fullwidth .cv-contact-hero-box h1,
+.cv-page-fullwidth h1.cv-contact-hero-title {
+    font-family: 'Plus Jakarta Sans', Georgia, serif !important;
+    font-size: clamp(28px, 3.4vw, 38px) !important;
+    font-weight: 700 !important;
+    color: #1F1C18 !important;
+    margin: 0 0 10px !important;
+    text-align: center !important;
+    letter-spacing: -0.01em !important;
+    text-shadow: none !important;
+}
+
+.cv-contact-hero-desc,
+.cv-contact-hero-box p.cv-contact-hero-desc,
+.cv-page-fullwidth .cv-contact-hero-box p.cv-contact-hero-desc {
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-size: 16.5px !important;
+    color: #453E37 !important;
+    opacity: 1 !important;
+    margin: 0 auto 16px !important;
+    max-width: 620px !important;
+    line-height: 1.55 !important;
+    text-align: center !important;
+}
+
+.cv-contact-actions-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin: 16px auto 14px;
+}
+
+.cv-contact-action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 13px 32px;
+    border-radius: 50px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.cv-btn-phone {
+    background: var(--color-roble);
+    color: #ffffff !important;
+    border: 1.5px solid var(--color-roble);
+    box-shadow: 0 4px 16px rgba(156, 122, 91, 0.35);
+}
+
+.cv-btn-phone:hover {
+    background: #ffffff;
+    color: var(--color-negro) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.25);
+    text-decoration: none;
+}
+
+.cv-btn-whatsapp {
+    background: #25D366;
+    color: #ffffff !important;
+    border: 1.5px solid #25D366;
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
+}
+
+.cv-btn-whatsapp:hover {
+    background: #20ba5a;
+    color: #ffffff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
+    text-decoration: none;
+}
+
+.cv-contact-mini-schedule {
+    font-size: 14.5px;
+    color: var(--color-beige);
+    margin: 6px auto 0;
+    line-height: 1.5;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* Cajoneras de Sedes con Fondo Unificado y Todo Centrado */
+.cv-cajoneras-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+    margin-bottom: 38px;
+}
+
+.cv-cajonera-card {
+    background: linear-gradient(145deg, #FAF7F2 0%, #F5EDE2 50%, #ECE1D2 100%);
+    border: 1.5px solid rgba(184, 155, 114, 0.45);
+    border-radius: 20px;
+    padding: 38px 30px;
+    text-decoration: none;
+    color: #1F1C18;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 14px 38px rgba(78, 56, 32, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.cv-cajonera-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 3.5px;
+    background: linear-gradient(90deg, #9C7A5B, #C29B75, #DEC9B3);
+}
+
+.cv-cajonera-card:hover {
+    transform: translateY(-4px);
+    border-color: #9C7A5B;
+    box-shadow: 0 20px 44px rgba(78, 56, 32, 0.14);
+    text-decoration: none;
+}
+
+.cv-cajonera-card h3 {
+    font-family: 'Plus Jakarta Sans', Georgia, serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: #1F1C18;
+    margin: 0 0 10px;
+    text-align: center;
+}
+
+.cv-cajonera-card p {
+    font-size: 15px;
+    color: #453E37;
+    line-height: 1.6;
+    margin: 0 auto 24px;
+    max-width: 480px;
+    text-align: center;
+}
+
+.cv-cajonera-card p strong {
+    color: #1F1C18;
+}
+
+/* Botón suave y semitransparente premium para las sedes */
+.cv-cajonera-special-btn {
+    background: linear-gradient(135deg, #9C7A5B 0%, #836143 100%);
+    border: none;
+    color: #FFFFFF !important;
+    padding: 13px 36px;
+    border-radius: 50px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14.5px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 4px 14px rgba(126, 95, 67, 0.28);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    margin: 4px auto 0;
+}
+
+.cv-cajonera-card:hover .cv-cajonera-special-btn {
+    background: linear-gradient(135deg, #836143 0%, #6E4F34 100%);
+    color: #ffffff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(126, 95, 67, 0.4);
+}
+
+/* Sección 2 columnas: Fotos locales a la izquierda, formulario grande a la derecha */
+/* Sección 2 columnas: Dos cajones completos a la izquierda, formulario grande a la derecha */
+.cv-contact-dual-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: stretch;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.cv-locales-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    height: 100%;
+}
+
+.cv-local-photo-card {
+    background: linear-gradient(145deg, #FAF7F2 0%, #F5EDE2 50%, #ECE1D2 100%);
+    border: 1.5px solid rgba(184, 155, 114, 0.45);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 14px 38px rgba(78, 56, 32, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 0;
+    min-height: 0;
+    text-align: center;
+    text-decoration: none;
+    position: relative;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.cv-local-photo-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 3.5px;
+    background: linear-gradient(90deg, #9C7A5B, #C29B75, #DEC9B3);
+    z-index: 2;
+}
+
+.cv-local-photo-card:hover {
+    transform: translateY(-4px);
+    border-color: #9C7A5B;
+    box-shadow: 0 20px 44px rgba(78, 56, 32, 0.14);
+    text-decoration: none;
+}
+
+/* Media split: Mitad izquierda foto, mitad derecha mapa interactivo con pin */
+.cv-local-media-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 195px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    border-bottom: 1px solid rgba(156, 122, 91, 0.35);
+    flex-shrink: 0;
+}
+
+.cv-local-media-photo {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    text-decoration: none;
+    display: block;
+}
+
+.cv-local-media-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.35s ease;
+}
+
+.cv-local-photo-card:hover .cv-local-media-photo img {
+    transform: scale(1.04);
+}
+
+.cv-local-media-map {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    border-left: 1.5px solid rgba(156, 122, 91, 0.4);
+    background: #e5e3df;
+}
+
+.cv-map-canvas {
+    width: 100%;
+    height: 100%;
+}
+
+.cv-custom-pin-wrap {
+    background: transparent !important;
+    border: none !important;
+}
+
+.cv-map-pin {
+    width: 28px;
+    height: 38px;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.35));
+}
+
+.cv-map-link-badge {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    z-index: 1000;
+    background: rgba(28, 26, 23, 0.88);
+    color: #FAF6F0 !important;
+    padding: 3px 9px;
+    border-radius: 4px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(156, 122, 91, 0.5);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.cv-map-link-badge:hover {
+    background: var(--color-roble);
+    border-color: #FAF6F0;
+    transform: translateY(-1px);
+    text-decoration: none;
+}
+
+.cv-local-title-link {
+    color: #1F1C18 !important;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.cv-local-title-link:hover {
+    color: #8E6D4E !important;
+    text-decoration: none;
+}
+
+.leaflet-control-attribution {
+    font-size: 9px !important;
+    background: rgba(255, 255, 255, 0.75) !important;
+}
+
+.cv-local-photo-info {
+    padding: 18px 24px;
+    background: transparent;
+    border-top: 1px solid rgba(156, 122, 91, 0.35);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex: 1 1 auto;
+    gap: 6px;
+}
+
+.cv-local-photo-info h3 {
+    font-family: 'Plus Jakarta Sans', Georgia, serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #1F1C18;
+    margin: 0;
+    line-height: 1.25;
+    text-align: center;
+    transition: color 0.2s ease;
+}
+
+.cv-local-photo-card:hover .cv-local-photo-info h3 {
+    color: #8E6D4E;
+}
+
+.cv-local-photo-address {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14.5px;
+    font-weight: 600;
+    color: #8E6D4E;
+    margin: 0;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.cv-local-photo-desc {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13.5px;
+    color: #453E37;
+    margin: 0;
+    line-height: 1.45;
+    text-align: center;
+}
+
+/* Formulario en bloque grande a la derecha con el mismo fondo cálido */
+.cv-form-large-box {
+    background: linear-gradient(145deg, #FAF7F2 0%, #F5EDE2 50%, #ECE1D2 100%);
+    border: 1.5px solid rgba(184, 155, 114, 0.45);
+    border-radius: 20px;
+    padding: 38px 36px;
+    box-shadow: 0 14px 38px rgba(78, 56, 32, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.cv-form-large-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 3.5px;
+    background: linear-gradient(90deg, #9C7A5B, #C29B75, #DEC9B3);
+}
+
+.cv-form-large-box h3 {
+    font-family: 'Plus Jakarta Sans', Georgia, serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: #1F1C18;
+    margin: 0 0 14px;
+    text-align: center;
+}
+
+.cv-form-large-box .cv-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    text-align: left;
+}
+
+.cv-form-large-box label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--color-beige);
+    text-align: left;
+}
+
+.cv-form-large-box .cv-form input:not([type=checkbox]),
+.cv-form-large-box .cv-form select,
+.cv-form-large-box .cv-form textarea {
+    width: 100% !important;
+    height: 50px !important;
+    min-height: 50px !important;
+    padding: 0 16px !important;
+    border: 1.5px solid rgba(156, 122, 91, 0.4) !important;
+    background: #FAF6F0 !important;
+    border-radius: 8px !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-size: 14.5px !important;
+    font-weight: 500 !important;
+    color: #1C1A17 !important;
+    line-height: 48px !important;
+    text-align: left !important;
+    box-sizing: border-box !important;
+    margin-top: 4px !important;
+    transition: all 0.2s ease !important;
+}
+
+.cv-form-large-box .cv-form textarea {
+    height: 120px !important;
+    min-height: 120px !important;
+    padding: 14px 16px !important;
+    line-height: 1.5 !important;
+}
+
+.cv-form-large-box .cv-form input::placeholder,
+.cv-form-large-box .cv-form textarea::placeholder {
+    color: #8C827A !important;
+    font-weight: 400 !important;
+}
+
+.cv-form-large-box .cv-form select {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%239C7A5B' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 16px center !important;
+    background-size: 16px !important;
+    padding-right: 46px !important;
+    cursor: pointer !important;
+}
+
+.cv-form-large-box .cv-form select option {
+    background: #FFFFFF !important;
+    color: #1C1A17 !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-size: 14.5px !important;
+    padding: 10px 14px !important;
+}
+
+.cv-form-large-box .cv-form input:focus,
+.cv-form-large-box .cv-form select:focus,
+.cv-form-large-box .cv-form textarea:focus {
+    border-color: #9C7A5B !important;
+    background: #FFFFFF !important;
+    box-shadow: 0 0 0 3px rgba(156, 122, 91, 0.25) !important;
+    outline: none !important;
+}
+
+.cv-form-large-box button.cv-form-submit-btn,
+.cv-form-submit-btn {
+    background: var(--color-roble) !important;
+    color: #ffffff !important;
+    border: 1.5px solid var(--color-roble) !important;
+    padding: 15px 36px !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    border-radius: 50px !important;
+    cursor: pointer !important;
+    transition: all 0.25s ease !important;
+    box-shadow: 0 4px 18px rgba(156, 122, 91, 0.35) !important;
+    margin: 10px auto 0 !important;
+    width: 100% !important;
+    max-width: 320px !important;
+    text-align: center !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    align-self: center !important;
+}
+
+.cv-form-large-box button.cv-form-submit-btn:hover,
+.cv-form-submit-btn:hover {
+    background: #ffffff !important;
+    border-color: #ffffff !important;
+    color: var(--color-negro) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
+}
+
+@media (max-width: 860px) {
+    .cv-contact-dual-section {
+        grid-template-columns: 1fr;
+    }
+    .cv-cajoneras-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Tarjetas clicables en portada */
+.cv-inner-card-link {
+    text-decoration: none !important;
+    cursor: pointer;
+    color: inherit !important;
+}
+
+.cv-inner-card-link:hover {
+    text-decoration: none !important;
+}
+
+/* Widget Flotante de WhatsApp con Popover de Selección */
+.cv-whatsapp-widget {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+}
+
+.cv-whatsapp-popover {
+    position: absolute;
+    bottom: calc(100% + 14px);
+    right: 0;
+    width: 360px;
+    max-width: calc(100vw - 36px);
+    background: linear-gradient(145deg, #FAF7F2 0%, #F5EDE2 100%);
+    border: 1.5px solid rgba(184, 155, 114, 0.45);
+    border-radius: 18px;
+    box-shadow: 0 16px 48px rgba(78, 56, 32, 0.18);
+    padding: 22px 20px 18px;
+    color: #1F1C18;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px) scale(0.96);
+    transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.cv-whatsapp-popover::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 3.5px;
+    background: linear-gradient(90deg, #25D366, #9C7A5B, #DEC9B3);
+}
+
+.cv-whatsapp-popover.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+.cv-wa-popover-header {
+    margin-bottom: 14px;
+}
+
+.cv-wa-popover-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.cv-wa-popover-badge {
+    background: rgba(37, 211, 102, 0.14);
+    color: #1EAA52;
+    border: 1px solid rgba(37, 211, 102, 0.35);
+    padding: 3px 10px;
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.cv-wa-close-btn {
+    background: transparent;
+    border: none;
+    color: #8E6D4E;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0 4px;
+    transition: color 0.2s;
+}
+
+.cv-wa-close-btn:hover {
+    color: #1F1C18;
+}
+
+.cv-wa-popover-header h4 {
+    font-family: 'Plus Jakarta Sans', Georgia, serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #1F1C18;
+    margin: 0 0 4px;
+    line-height: 1.3;
+}
+
+.cv-wa-popover-header p {
+    font-size: 12.5px;
+    color: #453E37;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.cv-wa-popover-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.cv-wa-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #FFFFFF;
+    border: 1.5px solid rgba(184, 155, 114, 0.4);
+    border-radius: 12px;
+    padding: 11px 14px;
+    text-decoration: none;
+    color: #1F1C18 !important;
+    box-shadow: 0 2px 8px rgba(78, 56, 32, 0.05);
+    transition: all 0.2s ease;
+}
+
+.cv-wa-option:hover {
+    background: #FAF7F2;
+    border-color: #128C7E;
+    box-shadow: 0 4px 14px rgba(18, 140, 126, 0.15);
+    transform: translateX(3px);
+    text-decoration: none;
+}
+
+.cv-wa-opt-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 9px;
+    background: #E8F8EE;
+    color: #0E7F43;
+    border: 1px solid rgba(37, 211, 102, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.cv-wa-opt-text {
+    flex: 1 1 auto;
+    min-width: 0;
+    text-align: left;
+}
+
+.cv-wa-opt-text strong {
+    display: block;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #1F1C18 !important;
+    line-height: 1.3;
+}
+
+.cv-wa-opt-text span {
+    display: block;
+    font-size: 11.5px;
+    font-weight: 500;
+    color: #4A4036 !important;
+    line-height: 1.35;
+    margin-top: 2px;
+}
+
+.cv-wa-opt-arrow {
+    font-size: 15px;
+    font-weight: 700;
+    color: #8E6D4E;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.cv-wa-option:hover .cv-wa-opt-arrow {
+    color: #0E7F43;
+    transform: translate(2px, -2px);
+}
+
+.cv-wa-popover-footer {
+    margin-top: 12px;
+    text-align: center;
+    padding-top: 10px;
+    border-top: 1px solid rgba(184, 155, 114, 0.3);
+}
+
+.cv-wa-popover-footer a {
+    font-size: 12px;
+    font-weight: 600;
+    color: #6E4F34 !important;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.cv-wa-popover-footer a:hover {
+    color: #0E7F43 !important;
+    text-decoration: underline;
+}
+
+/* Plantilla de Sede Clínica: Ficha de Centro con Foto, Mapa y Especialistas */
+.cv-center-profile-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 0 60px;
+}
+
+.cv-center-hero-card {
+    background: linear-gradient(145deg, #FAF7F2 0%, #F5EDE2 50%, #ECE1D2 100%);
+    border: 1.5px solid rgba(184, 155, 114, 0.45);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 14px 38px rgba(78, 56, 32, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+    margin-bottom: 48px;
+    position: relative;
+}
+
+.cv-center-hero-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 3.5px;
+    background: linear-gradient(90deg, #9C7A5B, #C29B75, #DEC9B3);
+    z-index: 2;
+}
+
+.cv-center-hero-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 300px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    border-bottom: 1.5px solid rgba(184, 155, 114, 0.35);
+}
+
+.cv-center-hero-photo {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.cv-center-hero-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.cv-center-hero-map {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    border-left: 1.5px solid rgba(184, 155, 114, 0.4);
+    background: #e5e3df;
+    z-index: 1 !important;
+}
+
+.cv-center-hero-map .leaflet-pane,
+.cv-center-hero-map .leaflet-top,
+.cv-center-hero-map .leaflet-bottom {
+    z-index: 10 !important;
+}
+
+.cv-center-hero-info {
+    padding: 32px 36px;
+    text-align: center;
+    color: #453E37;
+}
+
+.cv-center-hero-info h1 {
+    font-family: 'Plus Jakarta Sans', Georgia, serif;
+    font-size: clamp(26px, 3.2vw, 36px);
+    font-weight: 700;
+    color: #1F1C18;
+    margin: 0 0 12px;
+    text-align: center;
+}
+
+.cv-center-hero-info p.cv-center-lead {
+    font-size: 16.5px;
+    line-height: 1.6;
+    color: var(--color-beige);
+    max-width: 800px;
+    margin: 0 auto 24px;
+    text-align: center;
+}
+
+.cv-center-practical-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(156, 122, 91, 0.3);
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 18px;
+    text-align: center;
+}
+
+.cv-practical-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.cv-practical-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #FAF6F0;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.cv-practical-val {
+    font-size: 14px;
+    color: var(--color-beige);
+    line-height: 1.4;
+}
+
+.cv-practical-val a {
+    color: #FAF6F0;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.cv-practical-val a:hover {
+    text-decoration: underline;
+}
+
+/* Sección de Especialistas del Centro */
+.cv-center-team-section {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.cv-center-team-title {
+    font-family: 'Plus Jakarta Sans', Georgia, serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--color-negro);
+    margin: 0 0 10px;
+    text-align: center;
+}
+
+.cv-center-team-desc {
+    font-size: 15.5px;
+    color: #6E6862;
+    margin: 0 auto 30px;
+    max-width: 680px;
+    text-align: center;
+}
+
+.cv-specialists-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.cv-specialist-card {
+    background: linear-gradient(145deg, #FAF7F2 0%, #F5EDE2 50%, #ECE1D2 100%);
+    border: 1.5px solid rgba(184, 155, 114, 0.45);
+    border-radius: 20px;
+    padding: 24px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 22px;
+    box-shadow: 0 14px 38px rgba(78, 56, 32, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+}
+
+.cv-specialist-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 3.5px;
+    background: linear-gradient(90deg, #9C7A5B, #C29B75, #DEC9B3);
+}
+
+.cv-specialist-card:hover {
+    transform: translateY(-3px);
+    border-color: #9C7A5B;
+    box-shadow: 0 18px 42px rgba(78, 56, 32, 0.14);
+}
+
+.cv-specialist-avatar-wrap {
+    width: 105px;
+    height: 125px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(156, 122, 91, 0.2) 0%, rgba(217, 197, 178, 0.3) 100%);
+    border: 1.5px solid rgba(184, 155, 114, 0.45);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: inset 0 2px 8px rgba(78, 56, 32, 0.08);
+}
+
+.cv-specialist-initials {
+    font-family: 'Plus Jakarta Sans', serif;
+    font-size: 26px;
+    font-weight: 800;
+    color: #1F1C18;
+    letter-spacing: 0.05em;
+}
+
+.cv-specialist-avatar-badge {
+    font-size: 10px;
+    font-weight: 700;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: 4px;
+    background: linear-gradient(135deg, #9C7A5B 0%, #836143 100%);
+    padding: 3px 8px;
+    border-radius: 20px;
+}
+
+.cv-specialist-body {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.cv-specialist-body h3 {
+    font-family: 'Plus Jakarta Sans', Georgia, serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #1F1C18;
+    margin: 0;
+    line-height: 1.25;
+}
+
+.cv-specialist-role {
+    font-size: 13px;
+    font-weight: 700;
+    color: #8E6D4E;
+    letter-spacing: 0.02em;
+}
+
+.cv-specialist-desc {
+    font-size: 13.5px;
+    line-height: 1.45;
+    color: #453E37;
+    margin: 4px 0 12px;
+}
+
+.cv-specialist-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.cv-spec-btn-contact {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #25D366;
+    color: #ffffff !important;
+    font-size: 12.5px;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 3px 10px rgba(37, 211, 102, 0.3);
+}
+
+.cv-spec-btn-contact:hover {
+    background: #20BA5A;
+    transform: translateY(-1px);
+    box-shadow: 0 5px 14px rgba(37, 211, 102, 0.4);
+    text-decoration: none;
+}
+
+.cv-spec-btn-profile {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(217, 197, 178, 0.4);
+    color: #FAF6F0 !important;
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 7px 14px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.cv-spec-btn-profile:hover {
+    background: rgba(156, 122, 91, 0.35);
+    border-color: #FAF6F0;
+    text-decoration: none;
+}
+
+@media (max-width: 860px) {
+    .cv-center-hero-split {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+    .cv-center-hero-photo {
+        height: 220px;
+    }
+    .cv-center-hero-map {
+        height: 220px;
+        border-left: none;
+        border-top: 1.5px solid rgba(156, 122, 91, 0.4);
+    }
+    .cv-center-practical-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+    .cv-specialists-grid {
+        grid-template-columns: 1fr;
+    }
+    .cv-specialist-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    .cv-specialist-avatar-wrap {
+        width: 100px;
+        height: 100px;
+    }
+    .cv-specialist-actions {
+        justify-content: center;
+    }
+}
+
+/* ==========================================================================
+   AMPLIACIÓN A ANCHO COMPLETO PARA TODAS LAS PÁGINAS (Centros, Psicología, Equipo)
+   ========================================================================== */
+.cv-wide-page-wrap,
+.cv-wrap {
+    width: min(1480px, calc(100% - 48px)) !important;
+    max-width: 1480px !important;
+    margin: 0 auto !important;
+}
+
+.cv-page,
+.cv-page-fullwidth {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 20px 0 80px !important;
+}
+
+.cv-center-profile-wrap {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 auto;
+    padding: 0 0 60px;
+}
+
+.cv-center-hero-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: clamp(340px, 28vw, 440px) !important;
+    width: 100%;
+}
+
+/* Tarjetas limpias en ancho completo para servicios (Psicología, Logopedia, etc.) */
+.cv-clean-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 30px !important;
+    margin: 32px 0 44px !important;
+}
+
+.cv-clean-card {
+    background: #ffffff !important;
+    border: 1.5px solid rgba(156, 122, 91, 0.28) !important;
+    border-radius: 14px !important;
+    padding: 36px 32px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    box-shadow: 0 8px 26px rgba(28, 26, 23, 0.06) !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.cv-clean-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--color-roble), var(--color-beige));
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.cv-clean-card:hover {
+    transform: translateY(-4px) !important;
+    border-color: var(--color-roble) !important;
+    box-shadow: 0 16px 38px rgba(28, 26, 23, 0.12) !important;
+}
+
+.cv-clean-card:hover::before {
+    opacity: 1;
+}
+
+.cv-clean-card h3 {
+    font-family: 'Plus Jakarta Sans', Georgia, serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-negro);
+    margin: 0 0 14px;
+}
+
+.cv-clean-card p {
+    font-size: 16px;
+    line-height: 1.65;
+    color: #5C554E;
+    margin-bottom: 16px;
+}
+
+.cv-clean-card .cv-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--color-roble);
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    margin-top: auto;
+    transition: gap 0.2s ease, color 0.2s ease;
+}
+
+.cv-clean-card .cv-card-link:hover {
+    color: #7E6044;
+    gap: 10px;
+    text-decoration: none;
+}
+
+/* Fichas individuales de psicólogas / logopeda */
+.cv-service-card {
+    background: #ffffff !important;
+    border: 1.5px solid rgba(156, 122, 91, 0.28) !important;
+    border-radius: 14px !important;
+    padding: 38px 36px !important;
+    box-shadow: 0 8px 26px rgba(28, 26, 23, 0.06) !important;
+}
+
+.cv-page-fullwidth h1:not(.cv-contact-hero-title):not(.cv-center-hero-title):not(.cv-profile-name) {
+    font-family: 'Cormorant Garamond', 'Plus Jakarta Sans', Georgia, serif;
+    font-size: clamp(34px, 3.8vw, 48px);
+    font-weight: 700;
+    color: var(--color-negro);
+    margin: 0 auto 18px;
+    letter-spacing: -0.02em;
+    text-align: center;
+}
+
+.cv-page-fullwidth p.cv-lead {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #5C554E;
+    max-width: 860px;
+    margin: 0 auto 36px;
+    text-align: center;
+}
+
+/* ==========================================================================
+   REVISIÓN VISUAL INTEGRAL: ARTE, TIPOGRAFÍA CURVA, CENTRADOS Y PERFILES
+   ========================================================================== */
+
+/* 1. Hero Portada: Fachada real como dibujo a lápiz nítido y visible en todo el ancho y largo */
+.cv-home-hero-band {
+    position: relative !important;
+    background-image: url('assets/local-facade-art.jpg') !important;
+    background-size: cover !important;
+    background-position: center 30% !important;
+    background-repeat: no-repeat !important;
+    padding: 85px 0 95px !important;
+    min-height: 540px !important;
+    overflow: hidden !important;
+    border-bottom: 2px solid rgba(156, 122, 91, 0.35) !important;
+}
+
+/* Sin veladuras lechosas ni desenfoques para que el dibujo a lápiz se aprecie con total claridad */
+.cv-home-hero-band::before {
+    display: none !important;
+}
+
+.cv-home-brand {
+    position: relative !important;
+    z-index: 2 !important;
+    display: grid !important;
+    grid-template-columns: 1.05fr 0.95fr !important;
+    gap: 40px !important;
+    align-items: center !important;
+}
+
+.cv-hero-text {
+    position: relative !important;
+    padding: 24px clamp(16px, 3vw, 36px) !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+.cv-hero-text .cv-title-lead,
+.cv-hero-text .cv-title-mid {
+    color: #171513 !important;
+    text-shadow: 
+        0 0 12px #FFFFFF,
+        0 0 24px #FFFFFF,
+        0 1px 2px rgba(255, 255, 255, 0.95) !important;
+}
+
+.cv-hero-text .cv-title-avanzar {
+    color: #0F0D0B !important;
+    text-shadow: 
+        0 0 16px #FFFFFF,
+        0 0 32px #FFFFFF,
+        0 2px 4px rgba(255, 255, 255, 0.95) !important;
+}
+
+.cv-logo-stage {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 440px !important;
+    height: 440px !important;
+    margin: 0 auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: transparent !important;
+}
+
+.cv-logo-stage::before {
+    display: none !important;
+}
+
+.cv-logo-stage::after {
+    display: none !important;
+}
+
+.cv-logo-stage img {
+    position: relative !important;
+    z-index: 2 !important;
+    width: 380px !important;
+    height: 380px !important;
+    max-width: 90% !important;
+    max-height: 90% !important;
+    object-fit: contain !important;
+    mix-blend-mode: multiply !important;
+    filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.95)) drop-shadow(0 0 25px rgba(255, 255, 255, 0.9)) !important;
+    transition: transform 0.3s ease !important;
+}
+
+.cv-logo-stage:hover img {
+    transform: scale(1.03) !important;
+}
+
+@media (max-width: 860px) {
+    .cv-home-hero-band {
+        padding: 55px 0 65px !important;
+        min-height: auto !important;
+    }
+    .cv-home-brand {
+        grid-template-columns: 1fr !important;
+        text-align: center !important;
+        gap: 30px !important;
+    }
+    .cv-hero-text {
+        text-align: center !important;
+        padding: 10px 15px !important;
+    }
+    .cv-title-avanzar {
+        margin-left: 0 !important;
+    }
+    .cv-logo-stage {
+        height: 280px !important;
+        max-width: 280px !important;
+    }
+    .cv-logo-stage img {
+        width: 250px !important;
+        height: 250px !important;
+    }
+}
+
+/* 2. Sección Especialidades: Fondo con degradado y textura de pincelada minimalista */
+.cv-services-seo {
+    padding: 95px 0 105px !important;
+    background: 
+        radial-gradient(ellipse 70% 55% at 10% 25%, rgba(226, 204, 182, 0.6) 0%, transparent 65%),
+        radial-gradient(ellipse 65% 50% at 90% 75%, rgba(214, 192, 168, 0.55) 0%, transparent 65%),
+        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.65) 0%, transparent 60%),
+        linear-gradient(145deg, #FAF7F2 0%, #F5ECE0 40%, #EDE0CE 80%, #F9F4ED 100%) !important;
+    border-bottom: 1.5px solid rgba(156, 122, 91, 0.22) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.cv-services-seo::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background-image: radial-gradient(rgba(156, 122, 91, 0.08) 1.2px, transparent 1.2px), radial-gradient(rgba(217, 197, 178, 0.15) 1.2px, transparent 1.2px) !important;
+    background-size: 32px 32px !important;
+    background-position: 0 0, 16px 16px !important;
+    opacity: 0.65 !important;
+    pointer-events: none !important;
+}
+
+.cv-services-header {
+    text-align: center !important;
+    max-width: 860px !important;
+    margin: 0 auto 48px !important;
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+.cv-services-header h2 {
+    font-family: 'Cormorant Garamond', 'Italianno', Georgia, serif !important;
+    font-style: italic !important;
+    font-size: clamp(34px, 4.2vw, 52px) !important;
+    font-weight: 600 !important;
+    color: var(--color-negro) !important;
+    line-height: 1.2 !important;
+    margin: 0 auto 14px !important;
+    text-align: center !important;
+    letter-spacing: -0.01em !important;
+}
+
+.cv-services-header p {
+    font-size: 17px !important;
+    color: #5C554E !important;
+    max-width: 780px !important;
+    margin: 0 auto !important;
+    line-height: 1.65 !important;
+    text-align: center !important;
+}
+
+/* Tarjetas de Logopedia y Psicología con degradado satinado que resalta */
+.cv-services-grid {
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+.cv-services-grid .cv-service-card {
+    background: linear-gradient(150deg, #FFFFFF 0%, #FAF6F1 50%, #F5EDE3 100%) !important;
+    border: 1.5px solid rgba(156, 122, 91, 0.35) !important;
+    border-radius: 18px !important;
+    padding: 48px 42px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    text-align: center !important;
+    box-shadow: 0 12px 34px rgba(28, 26, 23, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease !important;
+}
+
+.cv-services-grid .cv-service-card::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important; left: 0 !important; right: 0 !important; height: 4px !important;
+    background: linear-gradient(90deg, var(--color-roble), var(--color-terracota), var(--color-beige)) !important;
+}
+
+.cv-services-grid .cv-service-card:hover {
+    transform: translateY(-5px) !important;
+    border-color: var(--color-roble) !important;
+    box-shadow: 0 20px 48px rgba(28, 26, 23, 0.12) !important;
+}
+
+.cv-services-grid .cv-service-card-top h3 {
+    font-family: 'Cormorant Garamond', 'Italianno', Georgia, serif !important;
+    font-style: italic !important;
+    font-size: 38px !important;
+    font-weight: 700 !important;
+    color: var(--color-negro) !important;
+    margin: 0 0 10px !important;
+    line-height: 1.15 !important;
+    text-align: center !important;
+}
+
+/* 3. Sección "Elige tu centro": Tipografía curva y fondo degradado con textura */
+.cv-home-short {
+    padding: 95px 0 105px !important;
+    background: 
+        radial-gradient(ellipse 65% 55% at 88% 20%, rgba(228, 206, 184, 0.6) 0%, transparent 65%),
+        radial-gradient(ellipse 60% 50% at 12% 80%, rgba(216, 194, 170, 0.55) 0%, transparent 65%),
+        radial-gradient(circle at 50% 45%, rgba(255, 255, 255, 0.55) 0%, transparent 60%),
+        linear-gradient(155deg, #F7F0E8 0%, #EEE2D2 45%, #E6D6C2 80%, #F6ECE0 100%) !important;
+    border-bottom: 1.5px solid rgba(156, 122, 91, 0.24) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.cv-home-short::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 40%, rgba(156, 122, 91, 0.05) 100%) !important;
+    pointer-events: none !important;
+}
+
+.cv-title-semicurve-wrap {
+    text-align: center !important;
+    margin: 0 auto 40px !important;
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+.cv-title-semicurve {
+    font-family: 'Cormorant Garamond', 'Italianno', Georgia, serif !important;
+    font-style: italic !important;
+    font-size: clamp(30px, 3.8vw, 46px) !important;
+    font-weight: 600 !important;
+    color: var(--color-negro) !important;
+    line-height: 1.25 !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+    letter-spacing: -0.01em !important;
+    position: relative !important;
+    padding-bottom: 14px !important;
+}
+
+.cv-title-semicurve::after {
+    content: '' !important;
+    display: block !important;
+    width: 150px !important;
+    height: 8px !important;
+    margin: 10px auto 0 !important;
+    border-bottom: 2.5px solid var(--color-roble) !important;
+    border-radius: 50% !important;
+    opacity: 0.85 !important;
+}
+
+/* 4. Centrado de Textos, Pestañas y Secciones en Páginas Interiores */
+.cv-team-tabs {
+    text-align: center !important;
+}
+
+.cv-team-tablist {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 14px !important;
+    margin: 0 auto 32px !important;
+}
+
+.cv-team-tab {
+    padding: 12px 28px !important;
+    border-radius: 50px !important;
+    font-weight: 600 !important;
+    font-size: 15.5px !important;
+    transition: all 0.2s ease !important;
+}
+
+.cv-team-panel-title,
+.cv-team-panel-intro,
+.cv-team-label {
+    text-align: center !important;
+}
+
+.cv-dropdown-heading {
+    text-align: center !important;
+    display: block !important;
+    margin-bottom: 8px !important;
+}
+
+/* 5. Sedes Clínicas (Plasencia y Navaconcejo): Contraste Blanco, Fondo Pincelado y Tarjetas Premium Semitransparentes */
+.cv-center-hero-info h1,
+.cv-page-fullwidth .cv-center-hero-info h1 {
+    font-family: 'Plus Jakarta Sans', Georgia, serif !important;
+    font-size: clamp(28px, 3.4vw, 40px) !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    margin: 0 auto 12px !important;
+    text-align: center !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45) !important;
+}
+
+/* ==========================================================================
+   SEDES CLÍNICAS (PLASENCIA Y NAVACONCEJO): PANORÁMICO SIN CAJÓN Y FOTOS COMPLETAS
+   ========================================================================== */
+
+/* 1. Supresión de migas de pan y eliminación del hueco superior en centros */
+.page-id-10 .cv-breadcrumb,
+.page-id-11 .cv-breadcrumb,
+.parent-pageid-9 .cv-breadcrumb {
+    display: none !important;
+}
+
+.page-id-10 .cv-wide-page-wrap,
+.page-id-11 .cv-wide-page-wrap,
+.parent-pageid-9 .cv-wide-page-wrap {
+    padding-top: 10px !important;
+    max-width: 1560px !important;
+    width: calc(100% - 36px) !important;
+}
+
+.page-id-10 .cv-page,
+.page-id-11 .cv-page,
+.parent-pageid-9 .cv-page {
+    padding-top: 0 !important;
+    padding-bottom: 60px !important;
+}
+
+.cv-center-profile-wrap {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* 2. Cabecera centrada de centros y bloque equilibrado: Foto a la izquierda, Mapa compacto y Datos a la derecha */
+.cv-center-header-centered {
+    text-align: center !important;
+    margin: 0 auto 36px !important;
+    width: 100% !important;
+}
+
+.cv-center-header-centered .cv-center-hero-title {
+    font-family: 'Plus Jakarta Sans', Georgia, serif !important;
+    font-size: clamp(28px, 3.4vw, 42px) !important;
+    font-weight: 800 !important;
+    color: var(--color-negro) !important;
+    line-height: 1.15 !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+}
+
+.cv-center-panoramic-hero {
+    display: grid !important;
+    grid-template-columns: 1.1fr 1fr !important;
+    gap: 32px !important;
+    align-items: stretch !important;
+    margin: 0 0 50px !important;
+    width: 100% !important;
+}
+
+.cv-center-hero-col-left {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+}
+
+.cv-center-photo-frame {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 420px !important;
+    border-radius: 20px !important;
+    overflow: hidden !important;
+    box-shadow: 0 14px 38px rgba(45, 30, 15, 0.08) !important;
+    border: 1.5px solid rgba(184, 155, 114, 0.4) !important;
+    margin: 0 !important;
+    position: relative !important;
+}
+
+.cv-center-photo-frame img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    display: block !important;
+}
+
+.cv-center-hero-col-right {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    gap: 16px !important;
+    height: 100% !important;
+}
+
+.cv-center-map-column-frame {
+    width: 100% !important;
+    height: 255px !important;
+    min-height: 255px !important;
+    position: relative !important;
+    border-radius: 18px !important;
+    overflow: hidden !important;
+    box-shadow: 0 10px 30px rgba(45, 30, 15, 0.08) !important;
+    border: 1.5px solid rgba(184, 155, 114, 0.42) !important;
+    margin: 0 !important;
+}
+
+.cv-center-map-column-frame .cv-map-canvas {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 255px !important;
+}
+
+.cv-center-practical-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 12px !important;
+    margin: 0 !important;
+}
+
+.cv-practical-item {
+    background: #FFFFFF !important;
+    border: 1.5px solid rgba(184, 155, 114, 0.4) !important;
+    border-radius: 14px !important;
+    padding: 16px 12px !important;
+    box-shadow: 0 6px 18px rgba(45, 30, 15, 0.05) !important;
+    text-align: center !important;
+}
+
+.cv-practical-label {
+    display: block !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.12em !important;
+    color: #8E6D4E !important;
+    margin-bottom: 6px !important;
+}
+
+.cv-practical-val {
+    display: block !important;
+    font-size: 13px !important;
+    line-height: 1.45 !important;
+    color: #1F1C18 !important;
+    font-weight: 600 !important;
+}
+
+.cv-practical-val a {
+    color: #8E6D4E !important;
+    font-weight: 700 !important;
+    text-decoration: none !important;
+}
+
+/* 3. Sección del Equipo Sanitario en Centros con fondo diferenciado para que resalten las fichas */
+.cv-center-team-section {
+    background: linear-gradient(180deg, #F0E6D8 0%, #EADFCF 100%) !important;
+    border: 1.5px solid rgba(184, 155, 114, 0.45) !important;
+    border-radius: 28px !important;
+    padding: 50px 36px 54px !important;
+    margin-top: 50px !important;
+    box-shadow: 0 16px 44px rgba(60, 45, 30, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+    width: 100% !important;
+}
+
+.cv-center-team-title {
+    font-family: 'Plus Jakarta Sans', Georgia, serif !important;
+    font-size: clamp(26px, 3vw, 34px) !important;
+    font-weight: 800 !important;
+    color: #1F1C18 !important;
+    text-align: center !important;
+    margin: 0 0 10px !important;
+}
+
+.cv-center-team-desc {
+    font-size: 16px !important;
+    color: #4A443E !important;
+    text-align: center !important;
+    max-width: 680px !important;
+    margin: 0 auto 36px !important;
+    line-height: 1.6 !important;
+}
+
+.cv-specialists-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 28px !important;
+}
+
+/* Fichas de especialistas con fondo blanco marfil de alto contraste y relieve pronunciado para resaltar al máximo */
+.cv-specialist-card {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    background: #FFFFFF !important;
+    border: 1.5px solid rgba(184, 155, 114, 0.55) !important;
+    border-radius: 22px !important;
+    box-shadow: 0 14px 34px rgba(60, 40, 20, 0.11), 0 2px 6px rgba(0, 0, 0, 0.04), inset 0 1px 0 #FFFFFF !important;
+    overflow: hidden !important;
+    padding: 36px 30px !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease !important;
+    position: relative !important;
+}
+
+.cv-specialist-card::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important; left: 0 !important; right: 0 !important; height: 4px !important;
+    background: linear-gradient(90deg, #9C7A5B, #C29B75, #DEC9B3) !important;
+}
+
+.cv-specialist-card:hover {
+    transform: translateY(-4px) !important;
+    border-color: #9C7A5B !important;
+    box-shadow: 0 22px 50px rgba(65, 45, 25, 0.18) !important;
+}
+
+.cv-specialist-photo-col {
+    display: none !important;
+}
+
+.cv-specialist-body {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    padding: 0 !important;
+}
+
+.cv-specialist-avatar-badge {
+    display: inline-block !important;
+    background: linear-gradient(135deg, #9C7A5B 0%, #BA9776 50%, #836143 100%) !important;
+    color: #FFFFFF !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.16em !important;
+    text-transform: uppercase !important;
+    padding: 6px 18px !important;
+    border-radius: 50px !important;
+    margin-bottom: 14px !important;
+    box-shadow: 0 4px 12px rgba(126, 95, 67, 0.25) !important;
+}
+
+.cv-specialist-body h3 {
+    font-family: 'Plus Jakarta Sans', Georgia, serif !important;
+    font-size: 22px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+    color: #1F1C18 !important;
+    margin: 0 0 6px !important;
+    text-align: center !important;
+}
+
+.cv-specialist-role {
+    color: #8E6D4E !important;
+    font-size: 13.5px !important;
+    font-weight: 700 !important;
+    margin: 0 auto 12px !important;
+    text-align: center !important;
+    display: block !important;
+    line-height: 1.4 !important;
+}
+
+.cv-specialist-desc {
+    color: #453E37 !important;
+    font-size: 14.5px !important;
+    line-height: 1.65 !important;
+    margin: 0 auto 22px !important;
+    text-align: center !important;
+    max-width: 480px !important;
+}
+
+.cv-specialist-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 9px !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+}
+
+.cv-spec-btn-contact-main {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 9px !important;
+    width: 100% !important;
+    max-width: 320px !important;
+    background: linear-gradient(135deg, #25D366 0%, #1EAA52 100%) !important;
+    color: #ffffff !important;
+    font-size: 13.5px !important;
+    font-weight: 700 !important;
+    padding: 11px 20px !important;
+    border-radius: 24px !important;
+    text-decoration: none !important;
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.32) !important;
+    transition: all 0.25s ease !important;
+    text-align: center !important;
+}
+
+.cv-spec-btn-contact-main:hover {
+    background: linear-gradient(135deg, #22C35E 0%, #179346 100%) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 22px rgba(37, 211, 102, 0.44) !important;
+    color: #ffffff !important;
+}
+
+.cv-spec-link-sub {
+    display: inline-block !important;
+    text-align: center !important;
+    width: 100% !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #7A5B3E !important;
+    text-decoration: none !important;
+    transition: color 0.2s ease !important;
+}
+
+.cv-spec-link-sub:hover {
+    color: #1F1C18 !important;
+    text-decoration: underline !important;
+}
+
+@media (max-width: 1180px) {
+    .cv-specialists-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media (max-width: 900px) {
+    .cv-center-panoramic-hero {
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+    }
+    .cv-center-photo-frame {
+        min-height: 280px !important;
+        height: 280px !important;
+    }
+    .cv-center-map-column-frame {
+        min-height: 240px !important;
+        height: 240px !important;
+    }
+    .cv-center-practical-grid {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+    }
+    .cv-center-team-section {
+        padding: 32px 18px !important;
+    }
+}
+
+@media (max-width: 650px) {
+    .cv-specialist-card {
+        grid-template-columns: 1fr !important;
+    }
+    .cv-specialist-photo-col {
+        min-height: 260px !important;
+        height: 260px !important;
+    }
+}
+
+/* 6. Perfiles Individuales del Equipo (Ficha Centrada sin Fotos y Fondo Suave Crema con Relieve) */
+.cv-profile-hero-card {
+    background: linear-gradient(145deg, #FAF7F2 0%, #F5EDE2 50%, #ECE1D2 100%) !important;
+    border: 1.5px solid rgba(184, 155, 114, 0.45) !important;
+    border-radius: 24px !important;
+    padding: 48px 42px !important;
+    display: block !important;
+    max-width: 880px !important;
+    margin: 0 auto 40px !important;
+    text-align: center !important;
+    box-shadow: 0 16px 44px rgba(78, 56, 32, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.cv-profile-hero-card::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important; left: 0 !important; right: 0 !important; height: 4px !important;
+    background: linear-gradient(90deg, #9C7A5B, #C29B75, #DEC9B3) !important;
+}
+
+.cv-profile-hero-info {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+}
+
+.cv-profile-badges {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    flex-wrap: wrap !important;
+    margin-bottom: 16px !important;
+}
+
+.cv-profile-badge-specialty {
+    background: linear-gradient(135deg, #9C7A5B 0%, #BA9776 50%, #836143 100%) !important;
+    border: none !important;
+    color: #FFFFFF !important;
+    font-size: 11.5px !important;
+    font-weight: 700 !important;
+    padding: 6px 18px !important;
+    border-radius: 50px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.12em !important;
+    box-shadow: 0 4px 12px rgba(126, 95, 67, 0.25) !important;
+}
+
+.cv-profile-badge-col {
+    background: rgba(156, 122, 91, 0.12) !important;
+    border: 1px solid rgba(156, 122, 91, 0.3) !important;
+    color: #6E5339 !important;
+    font-size: 11.5px !important;
+    font-weight: 700 !important;
+    padding: 6px 14px !important;
+    border-radius: 50px !important;
+}
+
+.cv-profile-name {
+    font-family: 'Plus Jakarta Sans', Georgia, serif !important;
+    font-style: normal !important;
+    text-transform: uppercase !important;
+    font-size: clamp(26px, 3.8vw, 40px) !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.05em !important;
+    color: #1F1C18 !important;
+    margin: 0 0 10px !important;
+    line-height: 1.18 !important;
+    text-align: center !important;
+}
+
+.cv-profile-hero-role {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: #8E6D4E !important;
+    margin-bottom: 18px !important;
+    line-height: 1.4 !important;
+    text-align: center !important;
+}
+
+.cv-profile-hero-bio {
+    font-size: 16px !important;
+    line-height: 1.72 !important;
+    color: #423C36 !important;
+    margin: 0 auto 28px !important;
+    max-width: 740px !important;
+    text-align: center !important;
+}
+
+.cv-profile-actions {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 14px !important;
+    flex-wrap: wrap !important;
+}
+
+.cv-profile-btn-wa {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    background: linear-gradient(135deg, #25D366 0%, #1EAA52 100%) !important;
+    color: #ffffff !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    padding: 12px 24px !important;
+    border-radius: 50px !important;
+    text-decoration: none !important;
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35) !important;
+    transition: all 0.25s ease !important;
+}
+
+.cv-profile-btn-wa:hover {
+    background: linear-gradient(135deg, #22C35E 0%, #179346 100%) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.48) !important;
+    text-decoration: none !important;
+}
+
+.cv-profile-btn-cita {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    background: linear-gradient(135deg, #9C7A5B 0%, #836143 100%) !important;
+    border: none !important;
+    color: #FFFFFF !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    padding: 12px 24px !important;
+    border-radius: 50px !important;
+    text-decoration: none !important;
+    box-shadow: 0 4px 14px rgba(126, 95, 67, 0.28) !important;
+    transition: all 0.25s ease !important;
+}
+
+.cv-profile-btn-cita:hover {
+    background: linear-gradient(135deg, #836143 0%, #6E4F34 100%) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 22px rgba(126, 95, 67, 0.4) !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+
+.cv-profile-btn-web {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    background: #FFFFFF !important;
+    border: 1.5px solid #9C7A5B !important;
+    color: #6E4F34 !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    padding: 11px 22px !important;
+    border-radius: 50px !important;
+    text-decoration: none !important;
+    box-shadow: 0 4px 14px rgba(78, 56, 32, 0.08) !important;
+    transition: all 0.25s ease !important;
+}
+
+.cv-profile-btn-web:hover {
+    background: #9C7A5B !important;
+    color: #FFFFFF !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 22px rgba(126, 95, 67, 0.28) !important;
+    text-decoration: none !important;
+}
+
+.cv-profile-web-box {
+    background: linear-gradient(145deg, #FBF8F3 0%, #F5EDE2 100%) !important;
+    border: 1.5px solid rgba(184, 155, 114, 0.5) !important;
+    border-radius: 18px !important;
+    padding: 24px 28px !important;
+    margin-top: 24px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 20px !important;
+    box-shadow: 0 6px 20px rgba(60, 42, 20, 0.06) !important;
+}
+
+.cv-profile-web-box-content h4 {
+    margin: 0 0 6px !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    color: #1F1C18 !important;
+}
+
+.cv-profile-web-box-content p {
+    margin: 0 !important;
+    font-size: 14.5px !important;
+    color: #5C5247 !important;
+    line-height: 1.5 !important;
+}
+
+@media (max-width: 768px) {
+    .cv-profile-web-box {
+        flex-direction: column !important;
+        text-align: center !important;
+    }
+}
+
+.cv-profile-hero-photo-wrap {
+    display: none !important;
+}
+
+/* Secciones modulares de perfil (Formación y Áreas) */
+.cv-profile-details-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 30px !important;
+    margin-bottom: 35px !important;
+}
+
+.cv-profile-section-card {
+    background: #ffffff !important;
+    border: 1.5px solid rgba(156, 122, 91, 0.28) !important;
+    border-radius: 16px !important;
+    padding: 34px 32px !important;
+    box-shadow: 0 8px 24px rgba(28, 26, 23, 0.05) !important;
+}
+
+.cv-profile-section-card h3 {
+    font-family: 'Plus Jakarta Sans', Georgia, serif !important;
+    font-size: 21px !important;
+    font-weight: 700 !important;
+    color: var(--color-negro) !important;
+    margin: 0 0 16px !important;
+    padding-bottom: 12px !important;
+    border-bottom: 1px solid rgba(156, 122, 91, 0.2) !important;
+}
+
+.cv-profile-list {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+}
+
+.cv-profile-list li {
+    font-size: 15px !important;
+    line-height: 1.55 !important;
+    color: #4A443E !important;
+    padding-left: 24px !important;
+    position: relative !important;
+}
+
+.cv-profile-list li::before {
+    content: "✓" !important;
+    position: absolute !important;
+    left: 0 !important;
+    color: var(--color-roble) !important;
+    font-weight: 800 !important;
+    font-size: 14px !important;
+}
+
+.cv-profile-sedes-banner {
+    background: linear-gradient(135deg, #FAF6F0 0%, #F4ECE3 100%) !important;
+    border: 1.5px solid rgba(156, 122, 91, 0.35) !important;
+    border-radius: 16px !important;
+    padding: 32px 36px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 24px !important;
+    box-shadow: 0 8px 24px rgba(28, 26, 23, 0.05) !important;
+    margin-bottom: 30px !important;
+}
+
+.cv-profile-sedes-content h3 {
+    font-family: 'Plus Jakarta Sans', Georgia, serif !important;
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    color: var(--color-negro) !important;
+    margin: 0 0 8px !important;
+}
+
+.cv-profile-sedes-content p {
+    font-size: 15.5px !important;
+    color: #5C554E !important;
+    margin: 0 !important;
+    line-height: 1.55 !important;
+}
+
+@media (max-width: 920px) {
+    .cv-profile-hero-card {
+        grid-template-columns: 1fr !important;
+        padding: 32px 24px !important;
+        text-align: center !important;
+    }
+    .cv-profile-name {
+        text-align: center !important;
+    }
+    .cv-profile-badges,
+    .cv-profile-actions {
+        justify-content: center !important;
+    }
+    .cv-profile-details-grid {
+        grid-template-columns: 1fr !important;
+    }
+    .cv-profile-sedes-banner {
+        flex-direction: column !important;
+        text-align: center !important;
+    }
+}
+
+/* 7. Estilo satinado crema con relieve para pestañas y fichas de Nuestro Equipo */
+.cv-team-tab {
+    border-radius: 30px !important;
+    padding: 11px 26px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.03em !important;
+    transition: all 0.25s ease !important;
+}
+
+.cv-team-tab[aria-selected="true"] {
+    background: linear-gradient(135deg, #9C7A5B 0%, #836143 100%) !important;
+    color: #FFFFFF !important;
+    border-color: #836143 !important;
+    box-shadow: 0 4px 14px rgba(126, 95, 67, 0.28) !important;
+}
+
+.cv-team-panel {
+    background: linear-gradient(180deg, #F0E6D8 0%, #EADFCF 100%) !important;
+    border: 1.5px solid rgba(184, 155, 114, 0.45) !important;
+    border-radius: 24px !important;
+    padding: 40px 32px !important;
+    box-shadow: 0 12px 32px rgba(60, 42, 20, 0.08) !important;
+}
+
+.cv-person-card {
+    background: #FFFFFF !important;
+    border: 1.5px solid rgba(184, 155, 114, 0.55) !important;
+    border-radius: 20px !important;
+    padding: 32px 26px !important;
+    box-shadow: 0 12px 30px rgba(60, 42, 20, 0.08), 0 2px 6px rgba(0, 0, 0, 0.03) !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease !important;
+    text-align: center !important;
+    align-items: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.cv-person-card:hover {
+    transform: translateY(-5px) !important;
+    border-color: #9C7A5B !important;
+    box-shadow: 0 20px 45px rgba(60, 42, 20, 0.16) !important;
+}
+
+.cv-person-card .cv-person-type {
+    font-size: 11px !important;
+    letter-spacing: 0.14em !important;
+    color: #8E6D4E !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    background: rgba(156, 122, 91, 0.12) !important;
+    padding: 4px 14px !important;
+    border-radius: 20px !important;
+    margin-bottom: 14px !important;
+}
+
+.cv-person-card h3 {
+    font-size: 23px !important;
+    font-weight: 800 !important;
+    margin: 8px 0 10px !important;
+    color: #1F1C18 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.04em !important;
+    text-align: center !important;
+}
+
+.cv-person-card p {
+    font-size: 14.5px !important;
+    line-height: 1.55 !important;
+    color: #554D45 !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+    max-width: 380px !important;
+}
+
+.cv-person-card .cv-card-arrow {
+    font-size: 13.5px !important;
+    font-weight: 700 !important;
+    margin-top: auto !important;
+    padding-top: 18px !important;
+    color: #8E6D4E !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.cv-person-card:hover .cv-card-arrow {
+    color: #1F1C18 !important;
+}
+
+/* ==========================================================================
+   PÁGINAS LEGALES (AVISO LEGAL, PRIVACIDAD, COOKIES) - ESTILO PREMIUM
+   ========================================================================== */
+.cv-legal-container {
+    max-width: 960px !important;
+    margin: 0 auto !important;
+    padding: 20px 20px 70px !important;
+}
+
+.cv-legal-header {
+    background: linear-gradient(145deg, #FBF8F3 0%, #F5EDE2 60%, #ECE0D0 100%) !important;
+    border: 1.5px solid rgba(184, 155, 114, 0.5) !important;
+    border-radius: 24px !important;
+    padding: 45px 40px !important;
+    margin-bottom: 35px !important;
+    box-shadow: 0 12px 32px rgba(60, 42, 20, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+    text-align: center !important;
+}
+
+.cv-legal-badge {
+    display: inline-block !important;
+    font-size: 11.5px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase !important;
+    color: #8E6D4E !important;
+    background: rgba(156, 122, 91, 0.12) !important;
+    padding: 6px 18px !important;
+    border-radius: 50px !important;
+    margin-bottom: 16px !important;
+    border: 1px solid rgba(156, 122, 91, 0.2) !important;
+}
+
+.cv-legal-title {
+    font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif !important;
+    font-size: clamp(34px, 4.5vw, 44px) !important;
+    font-weight: 800 !important;
+    color: #1F1C18 !important;
+    margin: 0 0 14px !important;
+    letter-spacing: 0.02em !important;
+}
+
+.cv-legal-lead {
+    font-size: 16.5px !important;
+    line-height: 1.65 !important;
+    color: #554D45 !important;
+    max-width: 760px !important;
+    margin: 0 auto 20px !important;
+}
+
+.cv-legal-meta {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    font-size: 13.5px !important;
+    font-weight: 600 !important;
+    color: #8E6D4E !important;
+    background: #FFFFFF !important;
+    padding: 6px 18px !important;
+    border-radius: 20px !important;
+    border: 1px solid rgba(184, 155, 114, 0.35) !important;
+}
+
+.cv-legal-section {
+    background: #FFFFFF !important;
+    border: 1.5px solid rgba(184, 155, 114, 0.4) !important;
+    border-radius: 22px !important;
+    padding: 38px 40px !important;
+    margin-bottom: 30px !important;
+    box-shadow: 0 10px 28px rgba(60, 42, 20, 0.05) !important;
+}
+
+.cv-legal-section-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: 16px !important;
+    margin-bottom: 22px !important;
+    padding-bottom: 16px !important;
+    border-bottom: 1.5px solid rgba(184, 155, 114, 0.25) !important;
+}
+
+.cv-legal-num {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    background: linear-gradient(135deg, #9C7A5B 0%, #836143 100%) !important;
+    color: #FFFFFF !important;
+    font-size: 16px !important;
+    font-weight: 800 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+    box-shadow: 0 4px 10px rgba(131, 97, 67, 0.25) !important;
+}
+
+.cv-legal-h2 {
+    font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif !important;
+    font-size: 24px !important;
+    font-weight: 800 !important;
+    color: #1F1C18 !important;
+    margin: 0 !important;
+    letter-spacing: 0.02em !important;
+}
+
+.cv-legal-h3 {
+    font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif !important;
+    font-size: 19px !important;
+    font-weight: 700 !important;
+    color: #6E4F34 !important;
+    margin: 28px 0 14px !important;
+    padding-top: 14px !important;
+    border-top: 1px dashed rgba(184, 155, 114, 0.3) !important;
+}
+
+.cv-legal-p {
+    font-size: 15.5px !important;
+    line-height: 1.75 !important;
+    color: #3F3A34 !important;
+    margin: 0 0 16px !important;
+}
+
+.cv-legal-identity-card {
+    background: linear-gradient(145deg, #FAF7F2 0%, #F5EDE2 100%) !important;
+    border: 1.5px solid rgba(184, 155, 114, 0.55) !important;
+    border-radius: 18px !important;
+    padding: 28px 32px !important;
+    margin: 22px 0 24px !important;
+    box-shadow: 0 6px 18px rgba(60, 42, 20, 0.04) !important;
+}
+
+.cv-legal-identity-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 18px 24px !important;
+}
+
+.cv-legal-id-item {
+    font-size: 14.5px !important;
+    line-height: 1.5 !important;
+    color: #3F3A34 !important;
+}
+
+.cv-legal-id-item strong {
+    display: block !important;
+    font-size: 11.5px !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+    color: #8E6D4E !important;
+    margin-bottom: 4px !important;
+}
+
+.cv-legal-id-item span {
+    font-weight: 700 !important;
+    color: #1F1C18 !important;
+    font-size: 15px !important;
+}
+
+.cv-legal-comm-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 18px !important;
+    margin: 22px 0 24px !important;
+}
+
+.cv-legal-comm-card {
+    background: linear-gradient(145deg, #FAF7F2 0%, #F5EDE2 100%) !important;
+    border: 1.5px solid rgba(184, 155, 114, 0.45) !important;
+    border-radius: 16px !important;
+    padding: 22px 20px !important;
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.cv-legal-comm-card .cv-comm-icon {
+    font-size: 24px !important;
+    margin-bottom: 8px !important;
+}
+
+.cv-legal-comm-card strong {
+    font-size: 12px !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    color: #8E6D4E !important;
+    margin-bottom: 6px !important;
+}
+
+.cv-legal-comm-card a, .cv-legal-comm-card span {
+    color: #1F1C18 !important;
+    font-size: 14.5px !important;
+    font-weight: 700 !important;
+    text-decoration: none !important;
+    line-height: 1.4 !important;
+}
+
+.cv-legal-comm-card a:hover {
+    color: #8E6D4E !important;
+    text-decoration: underline !important;
+}
+
+.cv-legal-clauses {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 18px 0 22px !important;
+}
+
+.cv-legal-clause-item {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 14px !important;
+    background: #FAF7F2 !important;
+    border: 1px solid rgba(184, 155, 114, 0.35) !important;
+    border-radius: 14px !important;
+    padding: 16px 20px !important;
+    margin-bottom: 12px !important;
+    font-size: 15px !important;
+    line-height: 1.65 !important;
+    color: #3F3A34 !important;
+}
+
+.cv-legal-clause-tag {
+    font-weight: 800 !important;
+    color: #8E6D4E !important;
+    font-size: 15px !important;
+    flex-shrink: 0 !important;
+    background: rgba(156, 122, 91, 0.15) !important;
+    width: 26px !important;
+    height: 26px !important;
+    border-radius: 50% !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-top: 1px !important;
+}
+
+.cv-legal-footer-nav {
+    background: linear-gradient(145deg, #FBF8F3 0%, #F5EDE2 100%) !important;
+    border: 1.5px solid rgba(184, 155, 114, 0.45) !important;
+    border-radius: 20px !important;
+    padding: 30px 24px !important;
+    text-align: center !important;
+    margin-top: 40px !important;
+}
+
+.cv-legal-footer-nav p {
+    margin: 0 0 16px !important;
+    font-size: 15px !important;
+    color: #554D45 !important;
+}
+
+.cv-legal-links-row {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 14px !important;
+    flex-wrap: wrap !important;
+}
+
+.cv-legal-link-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    background: #FFFFFF !important;
+    border: 1.5px solid #9C7A5B !important;
+    color: #6E4F34 !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    padding: 10px 22px !important;
+    border-radius: 50px !important;
+    text-decoration: none !important;
+    box-shadow: 0 4px 12px rgba(78, 56, 32, 0.06) !important;
+    transition: all 0.25s ease !important;
+}
+
+.cv-legal-link-btn:hover {
+    background: #9C7A5B !important;
+    color: #FFFFFF !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 20px rgba(126, 95, 67, 0.25) !important;
+}
+
+@media (max-width: 768px) {
+    .cv-legal-header {
+        padding: 32px 20px !important;
+    }
+    .cv-legal-section {
+        padding: 26px 20px !important;
+    }
+    .cv-legal-identity-grid {
+        grid-template-columns: 1fr !important;
+    }
+    .cv-legal-comm-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+
+
+
+

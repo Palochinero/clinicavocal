@@ -1,0 +1,14 @@
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+/wp-content/themes/clinica-vocal/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/wp-content/*
+  Cache-Control: public, max-age=2592000
+
+/wp-includes/*
+  Cache-Control: public, max-age=2592000
