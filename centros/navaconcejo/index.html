@@ -115,6 +115,76 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
         </div>
     </div>
 
+    <section class="cv-center-gallery" aria-labelledby="cv-gal-title">
+        <style>
+            .cv-center-gallery{margin:0 0 10px;text-align:center}
+            .cv-center-gallery .cv-gal-kicker{display:inline-block;font-family:'Plus Jakarta Sans',system-ui,sans-serif;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#9C7A5B;margin:0 0 8px}
+            .cv-center-gallery h2{font-family:'Plus Jakarta Sans',Georgia,serif;font-size:clamp(26px,3vw,34px);font-weight:800;color:#1F1C18;margin:0 0 10px}
+            .cv-center-gallery .cv-gal-desc{font-size:15.5px;color:#6E6862;max-width:640px;margin:0 auto 30px}
+            .cv-gal-grid{display:grid;grid-template-columns:1.15fr 1fr;grid-template-rows:1fr 1fr;gap:18px;height:clamp(460px,52vw,640px);text-align:left}
+            .cv-gal-item{position:relative;margin:0;border-radius:20px;overflow:hidden;border:1.5px solid rgba(184,155,114,.4);box-shadow:0 14px 38px rgba(45,30,15,.08);background:#F4ECE2;min-height:0}
+            .cv-gal-item--main{grid-row:1 / span 2}
+            .cv-gal-open{display:block;width:100%;height:100%;padding:0;border:0;background:none;cursor:zoom-in}
+            .cv-gal-open img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+            .cv-gal-item--main img{object-position:center 40%}
+            .cv-gal-item--front img{object-position:center 45%}
+            .cv-gal-open:hover img,.cv-gal-open:focus-visible img{transform:scale(1.04)}
+            .cv-gal-open:focus-visible{outline:3px solid #9C7A5B;outline-offset:-3px}
+            .cv-gal-item figcaption{position:absolute;left:14px;bottom:14px;padding:7px 14px;border-radius:999px;background:rgba(250,246,240,.92);color:#2C2621;font-family:'Plus Jakarta Sans',system-ui,sans-serif;font-size:13px;font-weight:600;pointer-events:none;box-shadow:0 4px 14px rgba(28,26,23,.12)}
+            .cv-gal-lightbox{border:0;padding:0;background:transparent;max-width:min(94vw,1200px);max-height:92vh;overflow:visible}
+            .cv-gal-lightbox::backdrop{background:rgba(28,26,23,.88)}
+            .cv-gal-lightbox img{display:block;max-width:min(94vw,1200px);max-height:82vh;width:auto;height:auto;border-radius:14px;margin:0 auto}
+            .cv-gal-lightbox p{color:#FAF6F0;text-align:center;font-family:'Plus Jakarta Sans',system-ui,sans-serif;font-size:15px;margin:12px 0 0}
+            .cv-gal-close{position:absolute;top:-14px;right:-14px;width:40px;height:40px;border-radius:50%;border:0;background:#FAF6F0;color:#1C1A17;font-size:24px;line-height:1;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.3)}
+            .cv-gal-grid--two{grid-template-columns:1.25fr 1fr;grid-template-rows:1fr;height:clamp(360px,38vw,500px)}
+            .cv-gal-grid--two .cv-gal-item--main{grid-row:auto}
+            @media (max-width:700px){
+                .cv-gal-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto;height:auto;gap:12px}
+                .cv-gal-item--main{grid-column:1 / span 2;grid-row:auto;aspect-ratio:4/3.4}
+                .cv-gal-item{aspect-ratio:1/1}
+                .cv-gal-item figcaption{left:8px;bottom:8px;font-size:11.5px;padding:5px 10px}
+                .cv-gal-close{top:-48px;right:0}
+                .cv-gal-grid--two{grid-template-columns:1fr}
+                .cv-gal-grid--two .cv-gal-item--main{grid-column:auto}
+                .cv-gal-grid--two .cv-gal-item{aspect-ratio:4/3}
+            }
+            @media (prefers-reduced-motion:reduce){.cv-gal-open img{transition:none}}
+        </style>
+        <span class="cv-gal-kicker">Clínica Navaconcejo</span>
+        <h2 id="cv-gal-title">Conoce nuestras instalaciones</h2>
+        <p class="cv-gal-desc">Un espacio cercano y luminoso en pleno Valle del Jerte, con gabinetes preparados para la atención de niños, adolescentes y adultos sin necesidad de desplazarse.</p>
+        <div class="cv-gal-grid cv-gal-grid--two">
+            <figure class="cv-gal-item cv-gal-item--main">
+                <button type="button" class="cv-gal-open" data-full="/wp-content/themes/clinica-vocal/assets/navaconcejo/navaconcejo-consulta.webp" data-caption="Gabinete de consulta" aria-label="Ampliar foto: Gabinete de consulta">
+                    <img src="/wp-content/themes/clinica-vocal/assets/navaconcejo/navaconcejo-consulta-800.webp" srcset="/wp-content/themes/clinica-vocal/assets/navaconcejo/navaconcejo-consulta-800.webp 800w, /wp-content/themes/clinica-vocal/assets/navaconcejo/navaconcejo-consulta.webp 1600w" sizes="(max-width: 700px) 100vw, 700px" width="800" height="613" alt="Gabinete de logopedia infantil de Clínica Vocal en Navaconcejo con material terapéutico" loading="lazy" decoding="async">
+                </button>
+                <figcaption>Gabinete de consulta</figcaption>
+            </figure>
+            <figure class="cv-gal-item ">
+                <button type="button" class="cv-gal-open" data-full="/wp-content/themes/clinica-vocal/assets/navaconcejo/navaconcejo-fachada.webp" data-caption="Nuestra fachada" aria-label="Ampliar foto: Nuestra fachada">
+                    <img src="/wp-content/themes/clinica-vocal/assets/navaconcejo/navaconcejo-fachada-800.webp" srcset="/wp-content/themes/clinica-vocal/assets/navaconcejo/navaconcejo-fachada-800.webp 800w, /wp-content/themes/clinica-vocal/assets/navaconcejo/navaconcejo-fachada.webp 1600w" sizes="(max-width: 700px) 100vw, 700px" width="800" height="481" alt="Fachada de Clínica Vocal en Avenida de Extremadura, 117, Navaconcejo" loading="lazy" decoding="async">
+                </button>
+                <figcaption>Nuestra fachada</figcaption>
+            </figure>
+        </div>
+        <dialog class="cv-gal-lightbox" id="cv-gal-lightbox" aria-label="Foto ampliada">
+            <button type="button" class="cv-gal-close" aria-label="Cerrar">&times;</button>
+            <img src="" alt="">
+            <p></p>
+        </dialog>
+        <script>
+        (function(){
+            var d=document.getElementById('cv-gal-lightbox');if(!d||!d.showModal)return;
+            var img=d.querySelector('img'),cap=d.querySelector('p');
+            document.querySelectorAll('.cv-gal-open').forEach(function(b){
+                b.addEventListener('click',function(){img.src=b.dataset.full;img.alt=b.querySelector('img').alt;cap.textContent=b.dataset.caption;d.showModal();});
+            });
+            d.querySelector('.cv-gal-close').addEventListener('click',function(){d.close();});
+            d.addEventListener('click',function(e){if(e.target===d)d.close();});
+        })();
+        </script>
+    </section>
+
     <div class="cv-center-team-section">
         <h2 class="cv-center-team-title">Especialistas que Atienden en Clínica Navaconcejo</h2>
         <p class="cv-center-team-desc">Equipo sanitario con dedicación continuada en nuestras consultas del Valle del Jerte. Puedes contactar directamente con cada profesional:</p>
